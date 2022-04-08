@@ -17,6 +17,9 @@
     "paths": {
       "Services/*": [
         "services/*"
+      ],
+      "Components/*": [
+        "components/*"
       ]
     }
   },
