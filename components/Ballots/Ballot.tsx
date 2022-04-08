@@ -16,6 +16,7 @@ const Ballot = (props: any) => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gridAutoRows: "1fr",
           gap: "1rem",
         }}
       >
@@ -23,7 +24,7 @@ const Ballot = (props: any) => {
           ballot={ballot}
           nominees={nominees}
           getIsNomineeSelected={getIsNomineeSelected}
-          selectNominee={selectNominee}
+          selectNominee={selectNominee(ballot.id)}
         />
       </div>
     </div>

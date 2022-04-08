@@ -9,8 +9,8 @@ const Nominees = (props: any) => {
       key={nominee.id}
       ballot={ballot}
       nominee={nominee}
-      isNomineeSelected={getIsNomineeSelected(ballot, nominee)}
-      selectNominee={selectNominee}
+      isNomineeSelected={getIsNomineeSelected(ballot.id, nominee.id)}
+      selectNominee={selectNominee(nominee.id)}
     />
   ));
 };
