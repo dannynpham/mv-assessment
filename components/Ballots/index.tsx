@@ -2,11 +2,13 @@ import * as React from "react";
 import Ballot from "./Ballot";
 import useModal from "Hooks/useModal";
 import { BallotSuccessModal } from "Components/modals";
+import { SubmitBallotButton } from "Components/buttons";
 
 const Ballots = (props: any) => {
   const { ballots } = props;
   const { isModalShowing, showModal, hideModal } = useModal();
   const [selectedNominees, setSelectedNominees] = React.useState<any>({});
+  const hasSelectedNominees = Object.values(selectedNominees).length === 0;
 
   const submitBallot = (e: any) => {
     e.preventDefault();
@@ -16,10 +18,14 @@ const Ballots = (props: any) => {
   const closeModal = () => {
     setSelectedNominees({});
     hideModal();
-  }
+  };
   const selectNominee = (ballotId: string) => (nomineeId: string) => () => {
     const copySelectedNominees: any = { ...selectedNominees };
-    copySelectedNominees[ballotId] = nomineeId;
+    if (copySelectedNominees[ballotId] === nomineeId) {
+      delete copySelectedNominees[ballotId];
+    } else {
+      copySelectedNominees[ballotId] = nomineeId;
+    }
     setSelectedNominees(copySelectedNominees);
   };
 
@@ -44,6 +50,7 @@ const Ballots = (props: any) => {
           />
         ))}
       </form>
+      <SubmitBallotButton isDisabled={hasSelectedNominees} />
     </>
   );
 };

@@ -30,7 +30,8 @@ const Nominee = (props: any) => {
           )}
           style={{ background: "rgba(0, 0, 0, 0.8)" }}
         >
-          <p>Select {nominee.title}</p>
+          <p className="text-3xl mb-6">{isNomineeSelected ? "Unselect" : "Select"} </p>
+          <p>{nominee.title}</p>
           <p>for</p>
           <p>{ballot.title}</p>
         </div>

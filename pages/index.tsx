@@ -5,7 +5,6 @@ import PageTitle from "Components/PageTitle";
 import Container from "Components/Container";
 import Ballots from "Components/Ballots";
 import * as API from "Services/api";
-import { SubmitBallotButton } from "Components/buttons";
 
 const Home: NextPage = () => {
   const [ballots, setBallots] = React.useState<any[]>([]);
@@ -30,7 +29,6 @@ const Home: NextPage = () => {
       <Container>
         <PageTitle>AWARDS 2021</PageTitle>
         <Ballots ballots={ballots} />
-        <SubmitBallotButton />
       </Container>
     </>
   );
