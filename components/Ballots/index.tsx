@@ -6,14 +6,17 @@ import { BallotSuccessModal } from "Components/modals";
 const Ballots = (props: any) => {
   const { ballots } = props;
   const { isModalShowing, showModal, hideModal } = useModal();
+  const [selectedNominees, setSelectedNominees] = React.useState<any>({});
 
   const submitBallot = (e: any) => {
     e.preventDefault();
     showModal();
   };
 
-  const [selectedNominees, setSelectedNominees] = React.useState<any>({});
-
+  const closeModal = () => {
+    setSelectedNominees({});
+    hideModal();
+  }
   const selectNominee = (ballotId: string) => (nomineeId: string) => () => {
     const copySelectedNominees: any = { ...selectedNominees };
     copySelectedNominees[ballotId] = nomineeId;
@@ -27,7 +30,7 @@ const Ballots = (props: any) => {
     <>
       <BallotSuccessModal
         isModalShowing={isModalShowing}
-        hideModal={hideModal}
+        hideModal={closeModal}
         ballots={ballots}
         selectedNominees={selectedNominees}
       />

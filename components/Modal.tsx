@@ -13,7 +13,7 @@ const style = {
     minWidth: "300px",
     maxWidth: "600px",
     height: "fit-content",
-    padding: "50px 20px",
+    padding: "60px 40px",
     border: "1px solid #E5E7F5",
     display: "relative",
     borderRadius: "8px",
