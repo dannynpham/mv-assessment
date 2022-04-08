@@ -32,15 +32,11 @@ The goal of this test is to build out a "Movie Awards 2021" interactive ballot. 
 
  > Install dependencies
 
-
-
 ```bash
  npm i
  ```
 
  > Run the application
-
-
 
 ```bash
  npm run dev
@@ -109,26 +105,31 @@ curl -X GET \
 ![#0D2436](https://via.placeholder.com/15/0D2436/000000?text=+)
 
  `#0D2436`
+
   + Default/normal font color:
 
 ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+)
 
  `#FFFFFF`
+
   + Hover font color:
 
 ![#CCCCCC](https://via.placeholder.com/15/CCCCCC/000000?text=+)
 
  `#CCCCCC`
+
   + Nominee card / submit button background:
 
 ![#009B86](https://via.placeholder.com/15/009B86/000000?text=+)
 
  `#009B86`
+
   + Selected Nominee card:
 
 ![#009B86](https://via.placeholder.com/15/009B86/000000?text=+)
 
  `#009B86`
+
   + Nominee card background hover / submit button background hover:
 
 ![#34AC9C](https://via.placeholder.com/15/#34AC9C/000000?text=+)
@@ -139,8 +140,13 @@ curl -X GET \
 
 ## TEST-INSTRUCTIONS
 
-
-
 ```bash
  npm run test
+ ```
+
+## To run the code
+
+```bash
+ npm install
+ npm run dev
  ```
