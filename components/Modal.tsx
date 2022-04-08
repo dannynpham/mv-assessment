@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 
-ReactModal.setAppElement('.app');
+ReactModal.setAppElement('body');
 
 const style = {
   overlay: {

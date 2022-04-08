@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Container>
-        <PageTitle>AWARDS 2021</PageTitle>
+        <PageTitle>MOVIE AWARDS 2021</PageTitle>
         <Ballots ballots={ballots} />
       </Container>
     </>
