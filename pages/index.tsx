@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       if (response.ok) {
         setBallots(response.items);
       }
-    })()
+    })();
   }, []);
 
   return (
@@ -25,8 +25,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Good Luck!</h1>
+      <main>
+        {ballots.map((ballot) => (
+          <div key={ballot.id}>
+            <h1>{ballot.title}</h1>
+            {ballot.items.map((item: any) => (
+              <div key={item.id}>
+                <h3 className="ml-4">{item.title}</h3>
+              </div>
+            ))}
+          </div>
+        ))}
       </main>
     </div>
   );
