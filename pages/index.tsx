@@ -1,9 +1,17 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import * as React from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import * as API from "Services/api";
 
 const Home: NextPage = () => {
+  React.useEffect(() => {
+    (async () => {
+      const response = await API.getBallots();
+      console.log(response);
+    })()
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -13,12 +21,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Good Luck!
-        </h1>
+        <h1 className={styles.title}>Good Luck!</h1>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
