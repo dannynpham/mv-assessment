@@ -150,3 +150,7 @@ curl -X GET \
  npm install
  npm run dev
  ```
+
+## Deployed
+
+[Netlify](https://mv-assessment.netlify.app/)
