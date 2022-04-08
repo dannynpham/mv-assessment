@@ -1,8 +1,16 @@
 import * as React from "react";
 import Ballot from "./Ballot";
+import useModal from "Hooks/useModal";
+import { BallotSuccessModal } from "Components/modals";
 
 const Ballots = (props: any) => {
   const { ballots } = props;
+  const { isModalShowing, showModal, hideModal } = useModal();
+
+  const submitBallot = (e: any) => {
+    e.preventDefault();
+    showModal();
+  };
 
   const [selectedNominees, setSelectedNominees] = React.useState<any>({});
 
@@ -15,14 +23,26 @@ const Ballots = (props: any) => {
   const getIsNomineeSelected = (ballotId: string, nomineeId: string) =>
     selectedNominees[ballotId] === nomineeId;
 
-  return ballots.map((ballot: any) => (
-    <Ballot
-      key={ballot.id}
-      ballot={ballot}
-      getIsNomineeSelected={getIsNomineeSelected}
-      selectNominee={selectNominee}
-    />
-  ));
+  return (
+    <>
+      <BallotSuccessModal
+        isModalShowing={isModalShowing}
+        hideModal={hideModal}
+        ballots={ballots}
+        selectedNominees={selectedNominees}
+      />
+      <form id="ballot-form" onSubmit={submitBallot}>
+        {ballots.map((ballot: any) => (
+          <Ballot
+            key={ballot.id}
+            ballot={ballot}
+            getIsNomineeSelected={getIsNomineeSelected}
+            selectNominee={selectNominee}
+          />
+        ))}
+      </form>
+    </>
+  );
 };
 
 export default Ballots;
