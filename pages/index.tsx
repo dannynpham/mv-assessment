@@ -1,17 +1,22 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import * as API from "Services/api";
 
 const Home: NextPage = () => {
+  const [ballots, setBallots] = React.useState<any[]>([]);
+
   React.useEffect(() => {
     (async () => {
       const response = await API.getBallots();
-      console.log(response);
+      if (response.ok) {
+        setBallots(response.items);
+      }
     })()
   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
