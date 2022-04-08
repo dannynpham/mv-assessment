@@ -12,5 +12,4 @@ const get = async (url: string) => {
   }
 };
 
-export const getBallots = async (): Promise<any> =>
-  get("http://localhost:3000/api/ballots");
+export const getBallots = async (): Promise<any> => get("/api/ballots");
