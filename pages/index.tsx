@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "clsx";
 import type { NextPage } from "next";
 import Head from "next/head";
 // import Image from "next/image";
@@ -7,6 +8,13 @@ import * as API from "Services/api";
 
 const Home: NextPage = () => {
   const [ballots, setBallots] = React.useState<any[]>([]);
+  const [selectedNominees, setSelectedNominees] = React.useState<any>({});
+
+  const selectNominee = (categoryId: string, nomineeId: string) => () => {
+    const copySelectedNominees: any = { ...selectedNominees };
+    copySelectedNominees[categoryId] = nomineeId;
+    setSelectedNominees(copySelectedNominees);
+  };
 
   React.useEffect(() => {
     (async () => {
@@ -16,6 +24,9 @@ const Home: NextPage = () => {
       }
     })();
   }, []);
+
+  const isSelectedNominee = (categoryId: string, nomineeId: string) =>
+    selectedNominees[categoryId] === nomineeId;
 
   return (
     <div className={styles.container}>
@@ -30,8 +41,19 @@ const Home: NextPage = () => {
           <div key={ballot.id}>
             <h1>{ballot.title}</h1>
             {ballot.items.map((item: any) => (
-              <div key={item.id}>
-                <h3 className="ml-4">{item.title}</h3>
+              <div
+                key={item.id}
+                className={clsx(
+                  isSelectedNominee(ballot.id, item.id) &&
+                    "border-2 border-red-500"
+                )}
+              >
+                <h3
+                  className="ml-4"
+                  onClick={selectNominee(ballot.id, item.id)}
+                >
+                  {item.title}
+                </h3>
               </div>
             ))}
           </div>
