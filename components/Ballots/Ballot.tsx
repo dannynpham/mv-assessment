@@ -8,7 +8,7 @@ const Ballot = (props: any) => {
   const nominees = ballot?.items ?? [];
   return (
     <div key={ballot.id}>
-      <h2 className="bg-gray-600 text-white p-3 rounded-lg text-lg">
+      <h2 className="bg-gray-500 text-white p-3 rounded-lg text-lg tracking-widest font-medium shadow shadow-black">
         {ballot.title}
       </h2>
       <div

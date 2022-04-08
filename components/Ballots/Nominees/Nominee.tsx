@@ -10,10 +10,12 @@ const Nominee = (props: any) => {
     <div className="relative">
       <div
         className={clsx(
-          "p-4 border-4 bg-blue-200 rounded-lg cursor-pointer h-full",
+          "p-4 border-8 bg-gray-800 rounded-lg cursor-pointer h-full",
           "flex items-center flex-col justify-between",
-          "hover:shadow-white hover:shadow-lg",
-          isNomineeSelected ? "border-red-500" : "border-blue-500"
+          "shadow shadow-black",
+          isNomineeSelected
+            ? "border-yellow-500 shadow-lg shadow-black"
+            : "border-transparent"
         )}
         onClick={selectNominee}
       >
@@ -21,12 +23,12 @@ const Nominee = (props: any) => {
         <NomineeImage nominee={nominee} />
         <div
           className={clsx(
-            "text-white text-center absolute h-full w-full top-0 rounded-lg",
+            "absolute h-full w-full top-0 rounded-lg",
             "flex items-center justify-center flex-col",
             "opacity-0 hover:opacity-100",
-            "font-medium font-lg leading-6 tracking-widest"
+            "font-medium font-xl leading-6 tracking-widest text-white text-center"
           )}
-          style={{ background: "rgba(0, 0, 0, 0.6)" }}
+          style={{ background: "rgba(0, 0, 0, 0.8)" }}
         >
           <p>Select {nominee.title}</p>
           <p>for</p>
