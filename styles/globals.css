@@ -18,3 +18,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer components {
+  .text-hover {
+    @apply hover:text-[#CCCCCC] text-white;
+  }
+}

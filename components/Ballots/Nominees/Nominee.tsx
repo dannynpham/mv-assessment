@@ -10,7 +10,7 @@ const Nominee = (props: any) => {
     <div className="relative">
       <div
         className={clsx(
-          "p-4 border-8 bg-gray-800 rounded-lg cursor-pointer h-full",
+          "p-4 border-8 bg-[#009B86] rounded-lg cursor-pointer h-full",
           "flex items-center flex-col justify-between",
           "shadow shadow-black",
           isNomineeSelected

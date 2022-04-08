@@ -7,9 +7,8 @@ const SubmitBallotButton = (props: any) => {
   return (
     <button
       className={clsx(
-        "bg-yellow-500 hover:bg-yellow-700",
-        "text-white font-bold py-3 px-5 rounded shadow shadow-black text-xl",
-        "fixed right-10 bottom-10"
+        "text-hover font-bold py-3 px-5 rounded hover:shadow hover:shadow-black text-xl",
+        "fixed right-10 bottom-10 bg-[#009B86]"
       )}
       onClick={onSubmit}
     >
