@@ -36,26 +36,46 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="mx-auto w-full md:w-4/5 lg:w-3/5">
+        <h1 className="flex justify-center my-8">AWARDS 2021</h1>
+
         {ballots.map((ballot) => (
           <div key={ballot.id}>
-            <h1>{ballot.title}</h1>
-            {ballot.items.map((item: any) => (
-              <div
-                key={item.id}
-                className={clsx(
-                  isSelectedNominee(ballot.id, item.id) &&
-                    "border-2 border-red-500"
-                )}
-              >
-                <h3
-                  className="ml-4"
-                  onClick={selectNominee(ballot.id, item.id)}
+            <h2 className="bg-gray-600 text-white p-3">{ballot.title}</h2>
+            <div
+              className="py-4"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {ballot.items.map((item: any) => (
+                <div
+                  key={item.id}
+                  className={clsx(
+                    "px-8 py-4 border-4 bg-blue-200 flex items-center flex-col space-y-4",
+                    isSelectedNominee(ballot.id, item.id)
+                      ? "border-red-500"
+                      : "border-blue-500"
+                  )}
                 >
-                  {item.title}
-                </h3>
-              </div>
-            ))}
+                  <h3>{item.title}</h3>
+                  <div className="rounded-full p-10 border border-blue-500 inline-block relative">
+                    <div>
+                      <p>Nominee</p>
+                      <p>Image</p>
+                    </div>
+                  </div>
+                  <button
+                    className="text-white bg-gray-500 p-3"
+                    onClick={selectNominee(ballot.id, item.id)}
+                  >
+                    Select Button
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </main>
