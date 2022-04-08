@@ -1,21 +1,14 @@
 import * as React from "react";
-import clsx from "clsx";
 import type { NextPage } from "next";
 import Head from "next/head";
 import PageTitle from "Components/PageTitle";
 import Container from "Components/Container";
+import Ballots from "Components/Ballots";
 import * as API from "Services/api";
 import { SubmitBallotButton } from "Components/buttons";
 
 const Home: NextPage = () => {
   const [ballots, setBallots] = React.useState<any[]>([]);
-  const [selectedNominees, setSelectedNominees] = React.useState<any>({});
-
-  const selectNominee = (categoryId: string, nomineeId: string) => () => {
-    const copySelectedNominees: any = { ...selectedNominees };
-    copySelectedNominees[categoryId] = nomineeId;
-    setSelectedNominees(copySelectedNominees);
-  };
 
   React.useEffect(() => {
     (async () => {
@@ -25,9 +18,6 @@ const Home: NextPage = () => {
       }
     })();
   }, []);
-
-  const isSelectedNominee = (categoryId: string, nomineeId: string) =>
-    selectedNominees[categoryId] === nomineeId;
 
   return (
     <>
@@ -39,46 +29,7 @@ const Home: NextPage = () => {
 
       <Container>
         <PageTitle>AWARDS 2021</PageTitle>
-
-        {ballots.map((ballot) => (
-          <div key={ballot.id}>
-            <h2 className="bg-gray-600 text-white p-3">{ballot.title}</h2>
-            <div
-              className="py-4"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "1rem",
-              }}
-            >
-              {ballot.items.map((item: any) => (
-                <div
-                  key={item.id}
-                  className={clsx(
-                    "px-8 py-4 border-4 bg-blue-200 flex items-center flex-col justify-between space-y-4",
-                    isSelectedNominee(ballot.id, item.id)
-                      ? "border-red-500"
-                      : "border-blue-500"
-                  )}
-                >
-                  <h3>{item.title}</h3>
-                  <div className="rounded-full p-10 border border-blue-500 inline-block relative">
-                    <div>
-                      <p>Nominee</p>
-                      <p>Image</p>
-                    </div>
-                  </div>
-                  <button
-                    className="text-white bg-gray-500 p-3"
-                    onClick={selectNominee(ballot.id, item.id)}
-                  >
-                    Select Button
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+        <Ballots ballots={ballots} />
         <SubmitBallotButton />
       </Container>
     </>
