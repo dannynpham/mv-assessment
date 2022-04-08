@@ -9,7 +9,7 @@ const SubmitBallotButton = (props: any) => {
       disabled={isDisabled}
       className={clsx(
         "text-hover font-bold py-3 px-5 rounded hover:shadow hover:shadow-black text-xl",
-        "fixed right-10 bottom-10 bg-[#009B86]"
+        "fixed right-10 bottom-10 bg-[#009B86] disabled:opacity-50"
       )}
       type="submit"
     >
